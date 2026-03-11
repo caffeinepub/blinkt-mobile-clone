@@ -1,0 +1,141 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-news-feed-interface-displaying-article-cards-with-headlines-source-information-publication-time-and-thumbnail-images-in-a-scrollable-vertical-list",
+      "featureTitle": "Create a news feed interface displaying article cards with headlines, source information, publication time, and thumbnail images in a scrollable vertical list",
+      "files": [
+        "frontend/src/components/ArticleCard.tsx",
+        "frontend/src/components/NewsFeed.tsx",
+        "frontend/src/pages/HomePage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-category-navigation-allowing-users-to-filter-news-by-topics-such-as-technology-business-sports-entertainment-and-general-news",
+      "featureTitle": "Create category navigation allowing users to filter news by topics such as Technology, Business, Sports, Entertainment, and General news",
+      "files": [
+        "frontend/src/components/CategoryTabs.tsx",
+        "frontend/src/components/NewsFeed.tsx",
+        "frontend/src/pages/HomePage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-article-detail-view-that-displays-full-article-content-source-attribution-publication-date-and-allows-users-to-open-the-original-article-link",
+      "featureTitle": "Implement article detail view that displays full article content, source attribution, publication date, and allows users to open the original article link",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/ArticleCard.tsx",
+        "frontend/src/pages/ArticleDetailPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-user-bookmarking-functionality-allowing-users-to-save-articles-for-later-reading-with-a-dedicated-bookmarks-section",
+      "featureTitle": "Add user bookmarking functionality allowing users to save articles for later reading with a dedicated bookmarks section",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/ArticleCard.tsx",
+        "frontend/src/components/BookmarkButton.tsx",
+        "frontend/src/pages/ArticleDetailPage.tsx",
+        "frontend/src/pages/BookmarksPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-search-functionality-enabling-users-to-search-articles-by-keywords-in-titles-and-content",
+      "featureTitle": "Implement search functionality enabling users to search articles by keywords in titles and content",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/AppHeader.tsx",
+        "frontend/src/components/SearchBar.tsx",
+        "frontend/src/pages/SearchResultsPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-modern-mobile-optimized-news-reader-interface-with-a-clean-minimalist-design-featuring-bold-typography-comfortable-spacing-smooth-transitions-and-a-cohesive-color-scheme-that-prioritizes-readability-and-content-focus",
+      "featureTitle": "Create a modern mobile-optimized news reader interface with a clean, minimalist design featuring bold typography, comfortable spacing, smooth transitions, and a cohesive color scheme that prioritizes readability and content focus",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Layout.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

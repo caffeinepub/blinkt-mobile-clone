@@ -1,0 +1,215 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Blinkt Mobile News Reader Clone - Frontend Implementation",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Create news feed interface with article cards in scrollable vertical list",
+      "acceptanceCriteria": [
+        "Articles display in a vertically scrollable feed",
+        "Each card shows headline, source name, time ago, and thumbnail",
+        "Feed supports infinite scroll or pagination"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ArticleCard.tsx",
+          "operation": "create",
+          "description": "Create ArticleCard component displaying headline, source, publication time (formatted as relative time), and thumbnail image using ExternalBlob.getDirectURL() for the thumbnail. Use the placeholder image frontend/public/assets/generated/article-placeholder.dim_400x300.png as fallback when thumbnail is not available."
+        },
+        {
+          "path": "frontend/src/components/NewsFeed.tsx",
+          "operation": "create",
+          "description": "Create NewsFeed component rendering a scrollable list of ArticleCard components. Implement infinite scroll using Intersection Observer API or pagination controls. Fetch articles using getArticlesOffset backend method with limit and offset parameters."
+        },
+        {
+          "path": "frontend/src/hooks/useArticles.ts",
+          "operation": "create",
+          "description": "Create custom hook for fetching articles with pagination support. Use React Query (useInfiniteQuery) to manage article data fetching, caching, and infinite scroll state. Call backend.getArticlesOffset() with appropriate limit/offset."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "create",
+          "description": "Create HomePage component that renders the NewsFeed component. This serves as the main landing page showing all articles."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Create category navigation for filtering news by topics",
+      "acceptanceCriteria": [
+        "Category tabs or buttons are visible in the UI",
+        "Selecting a category filters the news feed",
+        "Backend supports querying articles by category"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/CategoryTabs.tsx",
+          "operation": "create",
+          "description": "Create CategoryTabs component displaying horizontal tabs/buttons for Technology, Business, Sports, Entertainment, and General categories. Manage active category state and trigger category filter changes."
+        },
+        {
+          "path": "frontend/src/hooks/useArticlesByCategory.ts",
+          "operation": "create",
+          "description": "Create custom hook for fetching articles filtered by category. Use React Query (useInfiniteQuery) with category parameter. Call backend.getArticlesByCategoryOffset() with category, limit, and offset parameters."
+        },
+        {
+          "path": "frontend/src/components/NewsFeed.tsx",
+          "operation": "modify",
+          "description": "Modify NewsFeed component to accept optional category prop and use useArticlesByCategory hook when category is selected, otherwise use useArticles hook for all articles."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Modify HomePage to include CategoryTabs component above NewsFeed. Manage selected category state and pass it to NewsFeed component."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Implement article detail view with full content and external link",
+      "acceptanceCriteria": [
+        "Tapping an article card navigates to detail view",
+        "Detail view shows full content and metadata",
+        "External link button opens article in new tab"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ArticleDetailPage.tsx",
+          "operation": "create",
+          "description": "Create ArticleDetailPage component displaying full article details including title, source, publication date (formatted), thumbnail using ExternalBlob.getDirectURL(), snippet content, and a button/link to open articleUrl in a new tab. Retrieve article ID from route params."
+        },
+        {
+          "path": "frontend/src/hooks/useArticleDetail.ts",
+          "operation": "create",
+          "description": "Create custom hook to fetch and cache individual article details. Use React Query to manage article state. Source article data from existing cached articles list or implement backend method call if needed."
+        },
+        {
+          "path": "frontend/src/components/ArticleCard.tsx",
+          "operation": "modify",
+          "description": "Modify ArticleCard to be clickable and navigate to ArticleDetailPage using React Router Link or navigate function with article ID in the route."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for ArticleDetailPage at path /article/:id in the React Router configuration."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Add user bookmarking functionality with dedicated bookmarks section",
+      "acceptanceCriteria": [
+        "Users can bookmark articles from feed and detail views",
+        "Bookmarked articles persist across sessions",
+        "Dedicated bookmarks view shows all saved articles",
+        "Users can remove bookmarks"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/BookmarkButton.tsx",
+          "operation": "create",
+          "description": "Create BookmarkButton component with toggle bookmark functionality. Display filled/unfilled bookmark icon based on isBookmarked state. Call backend.bookmarkArticle() on click (handles both bookmark and unbookmark). Verify the authorization component's usage instructions before implementing, as this requires user authentication."
+        },
+        {
+          "path": "frontend/src/hooks/useBookmarkArticle.ts",
+          "operation": "create",
+          "description": "Create custom hook for bookmarking/unbookmarking articles using React Query mutation. Call backend.bookmarkArticle() and invalidate relevant queries to refresh article lists."
+        },
+        {
+          "path": "frontend/src/hooks/useBookmarkedArticles.ts",
+          "operation": "create",
+          "description": "Create custom hook for fetching bookmarked articles using React Query. Call backend.getBookmarkedArticles() and cache results."
+        },
+        {
+          "path": "frontend/src/pages/BookmarksPage.tsx",
+          "operation": "create",
+          "description": "Create BookmarksPage component displaying user's bookmarked articles in the same card format as NewsFeed. Use useBookmarkedArticles hook and render ArticleCard components."
+        },
+        {
+          "path": "frontend/src/components/ArticleCard.tsx",
+          "operation": "modify",
+          "description": "Modify ArticleCard to include BookmarkButton component. Pass article ID and isBookmarked state to BookmarkButton."
+        },
+        {
+          "path": "frontend/src/pages/ArticleDetailPage.tsx",
+          "operation": "modify",
+          "description": "Modify ArticleDetailPage to include BookmarkButton component with article ID and bookmark state."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for BookmarksPage at path /bookmarks in the React Router configuration."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Implement search functionality for articles by keywords",
+      "acceptanceCriteria": [
+        "Search input is accessible from main navigation",
+        "Search returns relevant articles matching query",
+        "Search results display in same card format as feed"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/SearchBar.tsx",
+          "operation": "create",
+          "description": "Create SearchBar component with text input field and search button. Handle search submission and navigation to search results page with query parameter."
+        },
+        {
+          "path": "frontend/src/hooks/useSearchArticles.ts",
+          "operation": "create",
+          "description": "Create custom hook for searching articles by keyword using React Query. Call backend.searchArticles() with search query parameter and cache results."
+        },
+        {
+          "path": "frontend/src/pages/SearchResultsPage.tsx",
+          "operation": "create",
+          "description": "Create SearchResultsPage component displaying search results using ArticleCard components. Retrieve search query from URL params and use useSearchArticles hook. Show empty state when no results found."
+        },
+        {
+          "path": "frontend/src/components/AppHeader.tsx",
+          "operation": "create",
+          "description": "Create AppHeader component containing app logo (frontend/public/assets/generated/blinkt-logo.dim_256x256.png), SearchBar component, and navigation links. This serves as the main navigation header."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for SearchResultsPage at path /search in the React Router configuration. Include AppHeader component in the main layout so it appears on all pages."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Create modern mobile-optimized news reader interface with clean minimalist design",
+      "acceptanceCriteria": [
+        "Design works well on mobile viewport sizes",
+        "Typography is clear and readable",
+        "Layout emphasizes content over chrome",
+        "Consistent visual language across all views"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Define global typography styles with bold, readable fonts optimized for mobile. Establish spacing scale, color scheme emphasizing readability, and transition utilities. Include mobile-first responsive breakpoints."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Configure Tailwind with custom color palette for news reader (neutral backgrounds, accent colors for interactive elements), typography scale optimized for mobile readability, and spacing system promoting comfortable content density."
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "create",
+          "description": "Create Layout component providing consistent page structure with AppHeader, main content area with proper spacing, and optional bottom navigation. Apply mobile-optimized padding and max-width constraints."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wrap all routes with Layout component to ensure consistent design system application across all pages."
+        }
+      ]
+    }
+  ]
+}

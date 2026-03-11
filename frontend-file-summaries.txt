@@ -1,0 +1,20 @@
+{
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup, routes for home/article/bookmarks/search pages, profile setup modal integration, and theme provider wrapper.",
+  "frontend/src/components/Layout.tsx": "Layout wrapper component providing consistent page structure with header, main content area, and footer across all pages.",
+  "frontend/src/components/AppHeader.tsx": "Sticky header component with logo, search bar, bookmarks link, login button, and responsive mobile menu using Sheet component.",
+  "frontend/src/components/AppFooter.tsx": "Footer component displaying copyright, attribution to caffeine.ai with UTM tracking, and heart icon.",
+  "frontend/src/components/LoginButton.tsx": "Authentication button component handling Internet Identity login/logout with loading states and query cache clearing on logout.",
+  "frontend/src/components/ProfileSetupModal.tsx": "Modal dialog for first-time user profile setup, collecting user name with form validation and mutation handling.",
+  "frontend/src/components/SearchBar.tsx": "Search input component with submit handler that navigates to search results page with query parameter.",
+  "frontend/src/components/CategoryTabs.tsx": "Horizontal tabs component for filtering articles by category (All, Technology, Business, Sports, Entertainment, General).",
+  "frontend/src/components/ArticleCard.tsx": "Card component displaying article thumbnail, title, source, timestamp, and bookmark button with hover effects and navigation to detail page (fixed Tailwind v3 class names).",
+  "frontend/src/components/BookmarkButton.tsx": "Toggle button for bookmarking articles with authentication check, optimistic UI updates, and toast notifications.",
+  "frontend/src/components/NewsFeed.tsx": "Infinite scroll feed component rendering article cards with intersection observer for pagination, loading skeletons, and error states (fixed React Hooks rules violation by calling both hooks unconditionally).",
+  "frontend/src/pages/HomePage.tsx": "Main landing page with category tabs and news feed, managing selected category state.",
+  "frontend/src/pages/ArticleDetailPage.tsx": "Full article detail view displaying thumbnail, title, metadata, content snippet, bookmark button, and external link to original article.",
+  "frontend/src/pages/BookmarksPage.tsx": "Dedicated page showing user's bookmarked articles with authentication check and empty state handling.",
+  "frontend/src/pages/SearchResultsPage.tsx": "Search results page displaying filtered articles based on query parameter with empty states and result count.",
+  "frontend/src/hooks/useQueries.ts": "Custom React Query hooks for all backend operations including user profiles, articles fetching with infinite scroll, category filtering, search, and bookmark management.",
+  "frontend/src/index.css": "Global styles with OKLCH color system featuring vibrant teal accent colors for light/dark modes optimized for news reader aesthetics.",
+  "frontend/tailwind.config.js": "Tailwind configuration with custom color tokens, typography, spacing, and animation settings for the news reader design system."
+}

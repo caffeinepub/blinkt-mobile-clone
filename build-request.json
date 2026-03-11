@@ -1,0 +1,134 @@
+{
+  "kind": "build_request",
+  "title": "Create Blinkt Mobile app clone",
+  "projectName": "Blinkt Clone",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a news feed interface displaying article cards with headlines, source information, publication time, and thumbnail images in a scrollable vertical list",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Articles display in a vertically scrollable feed",
+        "Each card shows headline, source name, time ago, and thumbnail",
+        "Feed supports infinite scroll or pagination"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement backend data model for news articles including fields for title, source, publication timestamp, content snippet, thumbnail URL, and article URL",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Article type includes all required fields",
+        "Backend can store and retrieve articles",
+        "Articles are returned in reverse chronological order"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Create category navigation allowing users to filter news by topics such as Technology, Business, Sports, Entertainment, and General news",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Category tabs or buttons are visible in the UI",
+        "Selecting a category filters the news feed",
+        "Backend supports querying articles by category"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Implement article detail view that displays full article content, source attribution, publication date, and allows users to open the original article link",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Tapping an article card navigates to detail view",
+        "Detail view shows full content and metadata",
+        "External link button opens article in new tab"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Add user bookmarking functionality allowing users to save articles for later reading with a dedicated bookmarks section",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can bookmark articles from feed and detail views",
+        "Bookmarked articles persist across sessions",
+        "Dedicated bookmarks view shows all saved articles",
+        "Users can remove bookmarks"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Implement search functionality enabling users to search articles by keywords in titles and content",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Search input is accessible from main navigation",
+        "Search returns relevant articles matching query",
+        "Search results display in same card format as feed"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Create a modern mobile-optimized news reader interface with a clean, minimalist design featuring bold typography, comfortable spacing, smooth transitions, and a cohesive color scheme that prioritizes readability and content focus",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Design works well on mobile viewport sizes",
+        "Typography is clear and readable",
+        "Layout emphasizes content over chrome",
+        "Consistent visual language across all views"
+      ]
+    }
+  ],
+  "constraints": [
+    "Use single-actor Motoko architecture for backend",
+    "Frontend must use React with TypeScript and Tailwind CSS",
+    "Authentication through Internet Identity only"
+  ],
+  "nonGoals": [
+    "Integration with external news APIs",
+    "Real-time push notifications for breaking news",
+    "Social sharing to external platforms",
+    "Commenting or social features between users",
+    "Native mobile app deployment"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Modern minimalist app logo icon for news reader (blinkt-logo.dim_256x256.png)",
+      "Placeholder thumbnail for articles without images showing abstract news iconography (article-placeholder.dim_400x300.png)"
+    ],
+    "edits": []
+  }
+}
